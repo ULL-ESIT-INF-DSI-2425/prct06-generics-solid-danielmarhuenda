@@ -5,7 +5,7 @@ interface Listable<T>{
     filter(predicado:Function):Lista<T>;
     lenght():number;
     map(funcion:Function):Lista<T>;
-    //reduce(lista:Lista<T>, funcion:Function, acumulador:number):void;
+    //reduce(funcion:Function, acumulador:number):void;
     reverse():Lista<T>;
     //forEach(lista:Lista<T>, funcion:Function):No se
 }
@@ -108,6 +108,10 @@ export class Lista<T> implements Listable<T>{
         return resultado;
     }
 
+    /**
+     * Funcion que devuelve la lista en orden inverso
+     * @returns Lista inversa
+     */
     reverse(): Lista<T> {
         let resultado:Lista<T> = new Lista<T>([]);
         let iterador_pos = 0;
@@ -124,4 +128,17 @@ export class Lista<T> implements Listable<T>{
 
         return resultado;
     }
+    /** 
+    reduce(funcion: Function, acumulador: number): void {
+        let resultado:Lista<T> = new Lista<T>([]);
+        let iterador_pos = 0;
+
+        while(this.items[iterador_pos] !== undefined){
+            resultado.items.push(funcion(this.items[iterador_pos]));
+            iterador_pos++;
+        }
+
+        return resultado;
+    }
+        */
 }

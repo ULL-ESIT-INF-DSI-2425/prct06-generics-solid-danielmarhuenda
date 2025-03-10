@@ -24,7 +24,9 @@ describe("Tests de la modificacon", () => {
     });
 
     test("lenght number", () => {
+        let listanumbertest:Lista<number> = new Lista<number>([1,2,3,4,5]);
         expect(listanumber1.lenght()).toBe(3);
+        expect(listanumbertest.lenght()).toBe(5);
     });
 
     test("map number", () => {
