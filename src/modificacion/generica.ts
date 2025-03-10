@@ -6,7 +6,7 @@ interface Listable<T>{
     lenght():number;
     map(funcion:Function):Lista<T>;
     //reduce(lista:Lista<T>, funcion:Function, acumulador:number):void;
-    //reverse(lista:Lista<T>):Lista<T>;
+    reverse():Lista<T>;
     //forEach(lista:Lista<T>, funcion:Function):No se
 }
 
@@ -103,6 +103,23 @@ export class Lista<T> implements Listable<T>{
         while(this.items[iterador_pos] !== undefined){
             resultado.items.push(funcion(this.items[iterador_pos]));
             iterador_pos++;
+        }
+
+        return resultado;
+    }
+
+    reverse(): Lista<T> {
+        let resultado:Lista<T> = new Lista<T>([]);
+        let iterador_pos = 0;
+
+        while(this.items[iterador_pos] !== undefined){
+            iterador_pos++;
+        }
+        iterador_pos--;
+
+        while(iterador_pos >= 0){
+            resultado.items.push(this.items[iterador_pos]);
+            iterador_pos--;
         }
 
         return resultado;
