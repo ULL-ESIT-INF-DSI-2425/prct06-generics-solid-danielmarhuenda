@@ -34,6 +34,12 @@ describe("Tests de la modificacon", () => {
         expect(listanumbertest.map((item:number) => item*2).getitems()).toStrictEqual([2,4,6]);
     });
 
+    test("reduce number", () => {
+        let listanumbertest:Lista<number> = new Lista<number>([1,2,3]);
+        expect(listanumbertest.reduce((accumulator:number, currentValue:number) => accumulator + currentValue, 3)).toStrictEqual(9);
+        expect(listanumbertest.reduce((accumulator:number, currentValue:number) => accumulator + currentValue)).toStrictEqual(6);
+    });
+
     test("reverse number", () => {
         expect(listanumber1.reverse().getitems()).toStrictEqual([3,2,1]);
     });
@@ -67,6 +73,12 @@ describe("Tests de la modificacon", () => {
     test("map string", () => {
         let listastringtest:Lista<string> = new Lista<string>(["a","b","c"]);
         expect(listastringtest.map((item:string) => item+"a").getitems()).toStrictEqual(["aa","ba","ca"]);
+    });
+
+    test("reduce string", () => {
+        let listastringtest:Lista<string> = new Lista<string>(["a","b","c"]);
+        expect(listastringtest.reduce((accumulator:string, currentValue:string) => accumulator + currentValue, "zz")).toStrictEqual("zzabc");
+        expect(listastringtest.reduce((accumulator:string, currentValue:string) => accumulator + currentValue, "")).toStrictEqual("abc");
     });
 
     test("reverse string", () => {

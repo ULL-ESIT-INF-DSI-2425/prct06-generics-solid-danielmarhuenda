@@ -5,7 +5,7 @@ interface Listable<T>{
     filter(predicado:Function):Lista<T>;
     lenght():number;
     map(funcion:Function):Lista<T>;
-    //reduce(funcion:Function, acumulador:number):void;
+    reduce(funcion:Function, acumulador:T):T;
     reverse():Lista<T>;
     //forEach(lista:Lista<T>, funcion:Function):No se
 }
@@ -91,8 +91,24 @@ export class Lista<T> implements Listable<T>{
         return iterador_pos;
     }
 
+
+    /** 
+    map(funcion:(a: T, b: T) => T): Lista<T> {
+        let resultado:Lista<T> = new Lista<T>([]);
+        let iterador_pos = 0;
+
+        while(this.items[iterador_pos] !== undefined){
+            resultado.items.push(funcion(this.items[iterador_pos], b));
+            iterador_pos++;
+        }
+
+        return resultado;
+    }
+    */
     /**
      * Funcion que aplica a todos los valores de la lista una funcion
+     * Intenté usar  map(funcion:(a: T, b: T) => T): Lista<T> {
+     * Pero no conseguí que detectara el b.
      * @param funcion Funcion a aplicar
      * @returns Lista con los valores ya aplicados
      */
@@ -128,17 +144,24 @@ export class Lista<T> implements Listable<T>{
 
         return resultado;
     }
-    /** 
-    reduce(funcion: Function, acumulador: number): void {
-        let resultado:Lista<T> = new Lista<T>([]);
+    
+    /**
+     * Funcion que realiza una funcion a los elementos del array y los acumula
+     * @param funcion Funcion a realizar
+     * @param acumulador Valor inicial del acumulador
+     * @returns 
+     */
+    reduce(funcion: Function, acumulador: T = null): T {
         let iterador_pos = 0;
 
         while(this.items[iterador_pos] !== undefined){
-            resultado.items.push(funcion(this.items[iterador_pos]));
+            acumulador = funcion(acumulador, this.items[iterador_pos]);
             iterador_pos++;
         }
 
-        return resultado;
+        return acumulador;
     }
-        */
+
+
+
 }
