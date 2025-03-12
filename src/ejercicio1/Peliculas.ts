@@ -1,4 +1,4 @@
-import { BasicStreamableCollection } from "./Genericos";
+import { BasicStreamableCollection } from "./Genericos.js";
 
 /**
  * Interfaz para representar una película
