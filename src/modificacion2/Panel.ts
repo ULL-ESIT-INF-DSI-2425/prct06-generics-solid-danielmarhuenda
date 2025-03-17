@@ -12,7 +12,7 @@ export default class Panel implements Observer{
 
     update(observable: Observable):string {
         if (observable instanceof Estacion) {
-            if(observable.temperatura > 60){
+            if(observable.temperatura > 60 || observable.temperatura < -274){
                 return "Error en la toma de temperatura"
             }
             return `Temperatura: ${observable.temperatura}`
