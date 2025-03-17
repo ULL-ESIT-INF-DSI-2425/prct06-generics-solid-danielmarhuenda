@@ -5,7 +5,7 @@ interface Listable<T>{
     filter(predicado:Function):Lista<T>;
     lenght():number;
     map(funcion:Function):Lista<T>;
-    reduce(funcion:Function, acumulador:T):T;
+    //reduce(funcion:Function, acumulador:T):T;
     reverse():Lista<T>;
     //forEach(lista:Lista<T>, funcion:Function):No se
 }
@@ -145,12 +145,7 @@ export class Lista<T> implements Listable<T>{
         return resultado;
     }
     
-    /**
-     * Funcion que realiza una funcion a los elementos del array y los acumula
-     * @param funcion Funcion a realizar
-     * @param acumulador Valor inicial del acumulador
-     * @returns 
-     */
+    /** 
     reduce(funcion: Function, acumulador: T = null): T {
         let iterador_pos = 0;
 
@@ -161,7 +156,6 @@ export class Lista<T> implements Listable<T>{
 
         return acumulador;
     }
-
-
+    */
 
 }
